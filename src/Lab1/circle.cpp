@@ -8,7 +8,7 @@ int main(void) {
     int midx, midy;
     int radius = 100;
 
-    initgraph(&gdriver, &gmode, "C:\\turboc3\\bgi");
+    initgraph(&gdriver, &gmode, "C:\\TURBOC3\\BGI");
     errorcode = graphresult();
     if (errorcode != grOk) {
         printf("Graphics error: %s\n", grapherrormsg(errorcode));

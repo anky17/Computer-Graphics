@@ -1,7 +1,7 @@
-#include <graphics.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include <conio.h>
+#include <graphics.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int maxX, maxY, midX, midY;
 

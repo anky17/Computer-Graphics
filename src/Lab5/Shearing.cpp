@@ -1,7 +1,7 @@
-#include <graphics.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include <conio.h>
+#include <graphics.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int maxX, maxY, midX, midY;
 
@@ -9,13 +9,6 @@ typedef struct point {
   float x;
   float y;
 } Point;
-
-void drawAxes() {
-  line(midX, 0, midX, maxY);
-  outtextxy(midX + 2, 0, (char *)"Y");
-  line(0, midY, maxX, midY);
-  outtextxy(maxX - 10, midY - 10, (char *)"X");
-}
 
 void matMul(float a[3][3], float b[3][3], float mul[3][3]) {
   int i, j, k;
@@ -36,12 +29,6 @@ void drawTriangle(Point P1, Point P2, Point P3) {
 }
 
 void normalize(Point P1, Point P2, Point P3, int mvCoeff, char *str) {
-  P1.x = midX - P1.x;
-  P2.x = midX - P2.x;
-  P3.x = midX - P3.x;
-  P1.y = midY - P1.y;
-  P2.y = midY - P2.y;
-  P3.y = midY - P3.y;
   drawTriangle(P1, P2, P3);
   outtextxy(P3.x + mvCoeff, P3.y + mvCoeff, str);
 }
@@ -73,19 +60,18 @@ int main() {
   maxY = getmaxy();
   midX = maxX / 2;
   midY = maxY / 2;
-  drawAxes();
-  //   drawTriangle(P1, P2, P3);
+
   normalize(P1, P2, P3, -30, (char *)"Original");
   Pt1 = YShear(P1, 2);
   Pt2 = YShear(P2, 2);
   Pt3 = YShear(P3, 2);
-  //   drawTriangle(Pt1, Pt2, Pt3);
+
   normalize(Pt1, Pt2, Pt3, -20, (char *)"Y Shear");
   Pt1 = XShear(P1, 2);
   Pt2 = XShear(P2, 2);
   Pt3 = XShear(P3, 2);
-  //   drawTriangle(Pt1, Pt2, Pt3);
   normalize(Pt1, Pt2, Pt3, -20, (char *)"X Shear");
+
   getch();
   closegraph();
   return 0;
