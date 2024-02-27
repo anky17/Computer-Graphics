@@ -61,5 +61,10 @@ int main() {
   }
   ellipsemidpoint(240, 180, 50, 100);
   ellipsemidpoint(180, 340, 100, 50);
+  putpixel(240, 180, 7);
+  outtextxy(245, 180, (char *)"Center");
+  putpixel(180, 340, 7);
+  outtextxy(185, 340, (char *)"Center");
   getch();
+  return 0;
 }
