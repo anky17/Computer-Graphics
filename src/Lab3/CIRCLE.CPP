@@ -43,6 +43,8 @@ int main() {
     exit(1);
   }
   midPoint(180, 240, 100);
+  putpixel(180, 240, 7);
+  outtextxy(185, 240, (char *)"Center");
   getch();
   closegraph();
   return 0;
