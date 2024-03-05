@@ -1,4 +1,5 @@
 // WAP TO IMPLEMENT WINDOWS TO VIEWPORT TRANSFORMATION.
+
 #include <conio.h>
 #include <graphics.h>
 #include <stdio.h>
@@ -20,10 +21,10 @@ void viewPortTransformation() {
   sx = (float)(V_xmax - V_xmin) / (W_xmax - W_xmin);
   sy = (float)(V_ymax - V_ymin) / (W_ymax - W_ymin);
   x = V_xmin + (float)((x - W_xmin) * sx);
-  x1 = V_xmin + (float)((x1 - W_xmin) * sx);
-  x2 = V_xmin + (float)((x2 - W_xmin) * sx);
   y = V_ymin + (float)((y - W_ymin) * sy);
+  x1 = V_xmin + (float)((x1 - W_xmin) * sx);
   y1 = V_ymin + (float)((y1 - W_ymin) * sy);
+  x2 = V_xmin + (float)((x2 - W_xmin) * sx);
   y2 = V_ymin + (float)((y2 - W_ymin) * sy);
   drawTriangle(x, y, x1, y1, x2, y2);
 }
