@@ -2,6 +2,7 @@
 
 #include <graphics.h>
 #include <stdio.h>
+#include <conio.h>
 
 // Define window boundaries
 #define X_MIN 100
@@ -10,7 +11,7 @@
 #define Y_MAX 200
 
 // Define screen division for before and after clipping
-#define DIVIDE_X getmaxx() / 2
+#define midX getmaxx() / 2
 
 // Define region codes
 #define INSIDE 0  // 0000
@@ -91,16 +92,20 @@ int main() {
 
   // Draw the original lines and clipping rectangle on the left half
   rectangle(X_MIN, Y_MIN, X_MAX, Y_MAX);
+  outtextxy(X_MIN, Y_MIN - 20, (char *)"Before");
   line(120, 150, 200, 180);  // Line completely inside
-  line(50, 250, 70, 300);    // Line completely outside
-  line(50, 150, 350, 200);   // Line partially inside
+  line(100, 250, 150, 300);  // Line completely outside
+  line(50, 150, 310, 200);   // Line partially inside
 
+  // Line to Separate the Partition
+  line(midX, 0, midX, getmaxy());
   // Draw the clipping rectangle on the right half
-  rectangle(X_MIN + DIVIDE_X, Y_MIN, X_MAX + DIVIDE_X, Y_MAX);
+  rectangle(X_MIN + midX, Y_MIN, X_MAX + midX, Y_MAX);
+  outtextxy(X_MIN + midX, Y_MIN - 20, (char *)"After");
   // Clip lines and draw them on the right half
-  cohenSutherlandClip(120, 150, 200, 180, DIVIDE_X, 0);
-  cohenSutherlandClip(50, 250, 70, 300, DIVIDE_X, 0);
-  cohenSutherlandClip(50, 150, 350, 200, DIVIDE_X, 0);
+  cohenSutherlandClip(120, 150, 200, 180, midX, 0);
+  cohenSutherlandClip(100, 250, 150, 300, midX, 0);
+  cohenSutherlandClip(50, 150, 310, 200, midX, 0);
 
   getch();
   closegraph();

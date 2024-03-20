@@ -50,21 +50,26 @@ int main() {
   int gdriver = DETECT, gmode, errorcode;
   initgraph(&gdriver, &gmode, (char *)"C:/TurboC3/BGI");
 
+  outtextxy(X_MIN, Y_MIN - 20, (char *)"Before");
   rectangle(X_MIN, Y_MIN, X_MAX, Y_MAX);
   line(150, 150, 250, 180);  // Completely inside
-  line(300, 250, 450, 300);  // Completely outside
-  line(50, 150, 350, 200);   // Partially inside
+  line(200, 250, 300, 300);  // Completely outside
+  line(50, 150, 310, 200);   // Partially inside
 
-  // Set up for clipped lines and draw them on the right side
   int offsetX = getmaxx() / 2;
   int offsetY = 0;  // No vertical offset
+  // Line to Separate the Partition
+  line(offsetX, 0, offsetX, getmaxy());
+  // Set up for clipped lines and draw them on the right side
+
+  outtextxy(X_MIN + offsetX, Y_MIN - 20, (char *)"After");
   rectangle(X_MIN + offsetX, Y_MIN, X_MAX + offsetX, Y_MAX);
 
   // Applying Liang-Barsky algorithm and drawing the clipped lines
   liangBarsky(150, 150, 250, 180, offsetX, offsetY);  // Completely inside
-  liangBarsky(350, 250, 450, 300, offsetX,
+  liangBarsky(200, 250, 300, 300, offsetX,
               offsetY);  // Completely outside (won't be drawn)
-  liangBarsky(50, 150, 350, 200, offsetX, offsetY);  // Partially inside
+  liangBarsky(50, 150, 310, 200, offsetX, offsetY);  // Partially inside
 
   getch();
   closegraph();
