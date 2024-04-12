@@ -3,11 +3,8 @@
 *.out
 *.app
 
-
 # Compile RUN output folder
 **/output/
-**/*.cf
-**/*.vcd
 
 # Folders
 build
