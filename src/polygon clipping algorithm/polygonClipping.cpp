@@ -43,30 +43,6 @@ int topClip(int, int);
 int rightClip(int, int);
 int bottomClip(int, int);
 
-// int main() {
-//   int gd = DETECT, gm;
-//   initgraph(&gd, &gm, (char*)"C:/TurboC3/BGI");
-//   int result, i;
-
-//   // Perform left, top, right, and bottom clipping successively
-//   result = leftClip(VERTICES, XMIN);
-//   result = topClip(result, YMIN);
-//   result = rightClip(result, XMAX);
-//   result = bottomClip(result, YMAX);
-
-//   // Draw the clipping window
-//   rectangle(XMIN, YMIN, XMAX, YMAX);
-
-//   // Draw the clipped polygon
-//   for (i = 0; i < result; i++) {
-//     line(vertices[i].x, vertices[i].y, vertices[(i + 1) % result].x,
-//          vertices[(i + 1) % result].y);
-//   }
-
-//   getch();
-//   closegraph();
-//   return 0;
-// }
 int main() {
   int gd = DETECT, gm;
   initgraph(&gd, &gm, (char*)"C:/TurboC3/BGI");
