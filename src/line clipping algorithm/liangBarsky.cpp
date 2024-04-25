@@ -42,7 +42,7 @@ void liangBarsky(float x0, float y0, float x1, float y1, int offsetX,
   float nx1 = x0 + t2 * dx;
   float ny1 = y0 + t2 * dy;
   // Apply offset when drawing the clipped lines
-  line(nx0 + offsetX, ny0, nx1 + offsetX, ny1);
+  line(nx0 + offsetX, ny0, nx1 + offsetX, ny1 + offsetY);
 }
 
 // Main function
