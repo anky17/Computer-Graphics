@@ -43,24 +43,56 @@ int topClip(int, int);
 int rightClip(int, int);
 int bottomClip(int, int);
 
+// int main() {
+//   int gd = DETECT, gm;
+//   initgraph(&gd, &gm, (char*)"C:/TurboC3/BGI");
+//   int result, i;
+
+//   // Perform left, top, right, and bottom clipping successively
+//   result = leftClip(VERTICES, XMIN);
+//   result = topClip(result, YMIN);
+//   result = rightClip(result, XMAX);
+//   result = bottomClip(result, YMAX);
+
+//   // Draw the clipping window
+//   rectangle(XMIN, YMIN, XMAX, YMAX);
+
+//   // Draw the clipped polygon
+//   for (i = 0; i < result; i++) {
+//     line(vertices[i].x, vertices[i].y, vertices[(i + 1) % result].x,
+//          vertices[(i + 1) % result].y);
+//   }
+
+//   getch();
+//   closegraph();
+//   return 0;
+// }
 int main() {
   int gd = DETECT, gm;
   initgraph(&gd, &gm, (char*)"C:/TurboC3/BGI");
   int result, i;
+  int offsetX =
+      getmaxx() /
+      2;  // Offset for the second drawing to the right half of the screen
 
-  // Perform left, top, right, and bottom clipping successively
+  // Original clipping window and polygon on the left half
+  rectangle(XMIN, YMIN, XMAX, YMAX);
+  for (i = 0; i < VERTICES; i++) {
+    line(vertices[i].x, vertices[i].y, vertices[(i + 1) % VERTICES].x,
+         vertices[(i + 1) % VERTICES].y);
+  }
+
+  // Perform clipping
   result = leftClip(VERTICES, XMIN);
   result = topClip(result, YMIN);
   result = rightClip(result, XMAX);
   result = bottomClip(result, YMAX);
 
-  // Draw the clipping window
-  rectangle(XMIN, YMIN, XMAX, YMAX);
-
-  // Draw the clipped polygon
+  // Clipping window and clipped polygon on the right half
+  rectangle(XMIN + offsetX, YMIN, XMAX + offsetX, YMAX);
   for (i = 0; i < result; i++) {
-    line(vertices[i].x, vertices[i].y, vertices[(i + 1) % result].x,
-         vertices[(i + 1) % result].y);
+    line(vertices[i].x + offsetX, vertices[i].y,
+         vertices[(i + 1) % result].x + offsetX, vertices[(i + 1) % result].y);
   }
 
   getch();
